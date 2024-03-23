@@ -8,6 +8,8 @@ namespace Students.Web.Controllers;
 
 public class StudentsController : Controller
 {
+    #region Ctor And Properties
+
     private readonly StudentsContext _context;
     private readonly ILogger _logger;
     private readonly ISharedResourcesService _sharedResourcesService;
@@ -21,6 +23,10 @@ public class StudentsController : Controller
         _logger = logger;
         _sharedResourcesService = sharedResourcesService;
     }
+
+    #endregion // Ctor And Properties
+
+    #region Public Methods
 
     // GET: Students
     public async Task<IActionResult> Index()
@@ -50,9 +56,21 @@ public class StudentsController : Controller
             {
                 var student = await _context.Student
                     .FirstOrDefaultAsync(m => m.Id == id);
-                if (student != null)
+                if (student is null)
                 {
-                    result = View(student);
+                    result = NotFound();
+                }
+                else
+                {
+                    var studentSubjects = _context.StudentSubject
+                        .Where(ss => ss.StudentId == id)
+                        .Include(ss => ss.Subject)
+                        .ToList();
+                    student.StudentSubjects = studentSubjects;
+                    if (student != null)
+                    {
+                        result = View(student);
+                    }
                 }
             }
         }
@@ -177,61 +195,66 @@ public class StudentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
     {
-        // Find the student
+        IActionResult result;
         var student = await _context.Student.FindAsync(id);
+
         if (student == null)
         {
-            // If the student is not found, return NotFound
-            return NotFound();
+            result = NotFound();
         }
-
-        // If the model state is not valid, return the view with the current student
-        if (!ModelState.IsValid)
+        else if (!ModelState.IsValid)
         {
-            return View(student);
+            result = View(student);
         }
-
-        try
+        else
         {
-            // Update the student's properties
-            student.Name = name;
-            student.Age = age;
-            student.Major = major;
-
-            // Get the chosen subjects
-            var chosenSubjects = await _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToListAsync();
-
-            // Remove the existing StudentSubject entities for the student
-            var studentSubjects = await _context.StudentSubject
-                .Where(ss => ss.StudentId == id)
-                .ToListAsync();
-            _context.StudentSubject.RemoveRange(studentSubjects);
-
-            // Add new StudentSubject entities for the chosen subjects
-            foreach (var subject in chosenSubjects)
+            try
             {
-                var studentSubject = new StudentSubject
+                // Update the student's properties
+                student.Name = name;
+                student.Age = age;
+                student.Major = major;
+
+                // Get the chosen subjects
+                var chosenSubjects = await _context.Subject
+                    .Where(s => subjectIdDst.Contains(s.Id))
+                    .ToListAsync();
+
+                // Remove the existing StudentSubject entities for the student
+                var studentSubjects = await _context.StudentSubject
+                    .Where(ss => ss.StudentId == id)
+                    .ToListAsync();
+                _context.StudentSubject.RemoveRange(studentSubjects);
+
+                // Add new StudentSubject entities for the chosen subjects
+                foreach (var subject in chosenSubjects)
                 {
-                    Student = student,
-                    Subject = subject
-                };
-                _context.StudentSubject.Add(studentSubject);
+                    var studentSubject = new StudentSubject
+                    {
+                        Student = student,
+                        Subject = subject
+                    };
+                    _context.StudentSubject.Add(studentSubject);
+                }
+
+                int saveResult = await _context.SaveChangesAsync();
+                if (saveResult == 0)
+                {
+                    throw new Exception("Error saving changes to the database.");
+                }
+
+                // Set the result to redirect to the Index action
+                result = RedirectToAction(nameof(Index));
             }
-
-            // Save changes to the database
-            await _context.SaveChangesAsync();
-
-            // Redirect to the Index action
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                // Log the exception and set the result to return the view with the current student
+                _logger.LogError("Exception caught: " + ex.Message);
+                result = View(student);
+            }
         }
-        catch (Exception ex)
-        {
-            // Log the exception and return the view with the current student
-            _logger.LogError("Exception caught: " + ex.Message);
-            return View(student);
-        }
+
+        return result;
     }
 
 
@@ -293,9 +316,15 @@ public class StudentsController : Controller
         return result;
     }
 
+    #endregion // Public Methods
+
+    #region Private Methods
+
     private bool StudentExists(int id)
     {
         var result = _context.Student.Any(e => e.Id == id);
         return result;
     }
+
+    #endregion // Private Methods
 }
