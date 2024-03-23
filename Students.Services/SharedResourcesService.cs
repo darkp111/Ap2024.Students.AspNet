@@ -41,7 +41,7 @@ public class SharedResourcesService : ISharedResourcesService
             else if (string.Equals(cultureInfo.Name, "en-US") ||
                     string.Equals(cultureInfo.Name, "en-GB"))
             {
-                resourceManager = new ResourceManager("Fundus.Resources.SharedResourcesEn", typeof(ResourcesEnglish).Assembly);
+                resourceManager = new ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
             }
             else
             {

@@ -30,7 +30,7 @@ public class StudentsController : Controller
     #region Public Methods
 
     // GET: Students
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? culture)
     {
         IActionResult result = View();
         try

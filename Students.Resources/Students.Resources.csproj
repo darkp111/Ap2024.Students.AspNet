@@ -21,11 +21,11 @@
 
   <ItemGroup>
     <EmbeddedResource Update="ResourcesEnglish.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesEnglish.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ResourcesPolish.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesPolish.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

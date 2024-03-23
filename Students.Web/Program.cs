@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NLog;
 using NLog.Web;
 using Students.Common.Data;
 using Students.Interfaces;
 using Students.Services;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,22 @@ try
     // Add services to the container.
     builder.Services.AddControllersWithViews();
 
+    // Configure RequestLocalizationOptions
+    var supportedCultures = new[]
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("de-DE"),
+        new CultureInfo("ja-JP"),
+        new CultureInfo("pl-PL"),
+    };
+    builder.Services.Configure<RequestLocalizationOptions>(options =>
+    {
+        options.DefaultRequestCulture = new RequestCulture("en-US");
+        options.SupportedCultures = supportedCultures;
+        options.SupportedUICultures = supportedCultures;
+        options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+    });
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
@@ -37,6 +57,13 @@ try
     app.UseStaticFiles();
 
     app.UseRouting();
+
+    // Use RequestLocalization middleware
+    var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>()?.Value;
+    if (localizationOptions != null)
+    {
+        app.UseRequestLocalization(localizationOptions);
+    }
 
     app.UseAuthorization();
 
