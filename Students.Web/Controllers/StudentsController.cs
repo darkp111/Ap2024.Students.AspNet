@@ -214,8 +214,8 @@ public class StudentsController : Controller
             {
                 var studentSubject = new StudentSubject
                 {
-                    StudentId = id,
-                    SubjectId = subject.Id
+                    Student = student,
+                    Subject = subject
                 };
                 _context.StudentSubject.Add(studentSubject);
             }
