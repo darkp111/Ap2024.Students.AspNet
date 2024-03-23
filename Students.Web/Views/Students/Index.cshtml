@@ -1,4 +1,5 @@
 ﻿@using Students.Interfaces
+@using System.Globalization
 @model IEnumerable<Student>
 
 @{
@@ -8,7 +9,14 @@
 <h1>Index of students</h1>
 
 @inject ISharedResourcesService sharedResourcesService
-
+@{
+    string? culture = Context.Session.GetString("Culture");
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
+    if (culture != null)
+    {
+        cultureInfo = CultureInfo.GetCultureInfo(culture);
+    }
+}
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -42,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Major)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService["Edit"]</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">@sharedResourcesService["Details"]</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">@sharedResourcesService["Delete"]</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">@sharedResourcesService.GetString("Details", cultureInfo)</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">@sharedResourcesService.GetString("Delete", cultureInfo)</a>
             </td>
         </tr>
         }

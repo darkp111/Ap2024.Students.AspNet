@@ -8,9 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', function (e) {
             e.preventDefault();
             var culture = this.getAttribute('data-culture');
-            var url = new URL(window.location.href);
-            url.searchParams.set('culture', culture);
-            window.location.href = url.href;
+            fetch('/Home/SetCulture?culture=' + culture)
+                .then(function (response) {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.error('Failed to set culture');
+                    }
+                });
         });
     });
 });

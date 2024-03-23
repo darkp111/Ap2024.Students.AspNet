@@ -29,5 +29,13 @@ namespace Students.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult SetCulture(string culture)
+        {
+            HttpContext.Session.SetString("Culture", culture);
+            var result = Ok();
+
+            return result;
+        }
     }
 }

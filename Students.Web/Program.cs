@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NLog;
@@ -26,6 +27,15 @@ try
 
     // Add services to the container.
     builder.Services.AddControllersWithViews();
+
+    // Add session support
+    builder.Services.AddDistributedMemoryCache();
+    builder.Services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    });
 
     // Configure RequestLocalizationOptions
     var supportedCultures = new[]
@@ -58,12 +68,29 @@ try
 
     app.UseRouting();
 
+    // Use session middleware
+    app.UseSession();
+
     // Use RequestLocalization middleware
     var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>()?.Value;
     if (localizationOptions != null)
     {
         app.UseRequestLocalization(localizationOptions);
     }
+
+    // Middleware to set culture based on the value in the session
+    app.Use(async (context, next) =>
+    {
+        var culture = context.Session.GetString("Culture");
+        if (!string.IsNullOrEmpty(culture))
+        {
+            var cultureInfo = new CultureInfo(culture);
+            CultureInfo.CurrentCulture = cultureInfo;
+            CultureInfo.CurrentUICulture = cultureInfo;
+        }
+
+        await next();
+    });
 
     app.UseAuthorization();
 
