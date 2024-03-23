@@ -20,12 +20,12 @@ public class DatabaseService : IDatabaseService
 
     #region Public Methods
 
-    public async Task<bool> EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
+    public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
     {
         var result = false;
 
         // Find the student
-        var student = await _context.Student.FindAsync(id);
+        var student = _context.Student.Find(id);
         if (student != null)
         {
             // Update the student's properties
@@ -56,7 +56,7 @@ public class DatabaseService : IDatabaseService
             }
 
             // Save changes to the database
-            var resultInt = await _context.SaveChangesAsync();
+            var resultInt = _context.SaveChanges();
             result = resultInt > 0;
         }
 

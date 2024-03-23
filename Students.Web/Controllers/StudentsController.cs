@@ -202,7 +202,7 @@ public class StudentsController : Controller
 
         try
         {
-            bool saveResult = await databaseService.EditStudent(id, name, age, major, subjectIdDst);
+            bool saveResult = databaseService.EditStudent(id, name, age, major, subjectIdDst);
             if (!saveResult)
             {
                 throw new Exception("Error saving changes to the database.");

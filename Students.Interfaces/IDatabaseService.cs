@@ -2,5 +2,5 @@
 
 public interface IDatabaseService
 {
-    Task<bool> EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
+    bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
 }
