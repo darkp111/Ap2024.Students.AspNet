@@ -167,6 +167,7 @@ public class StudentsController : Controller
                 if (student != null)
                 {
                     var chosenSubjects = _context.StudentSubject
+                        .Where(ss => ss.StudentId == id)
                         .Select(ss => ss.Subject)
                         .ToList();
                     var availableSubjects = _context.Subject
