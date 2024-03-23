@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
+using Students.Services;
 
 namespace Students.Web.Controllers;
 
@@ -197,62 +198,25 @@ public class StudentsController : Controller
     public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
     {
         IActionResult result;
-        var student = await _context.Student.FindAsync(id);
+        var databaseService = new DatabaseService(_context);
 
-        if (student == null)
+        try
         {
-            result = NotFound();
+            bool saveResult = await databaseService.EditStudent(id, name, age, major, subjectIdDst);
+            if (!saveResult)
+            {
+                throw new Exception("Error saving changes to the database.");
+            }
+
+            // Set the result to redirect to the Index action
+            result = RedirectToAction(nameof(Index));
         }
-        else if (!ModelState.IsValid)
+        catch (Exception ex)
         {
+            // Log the exception and set the result to return the view with the current student
+            _logger.LogError("Exception caught: " + ex.Message);
+            var student = await _context.Student.FindAsync(id);
             result = View(student);
-        }
-        else
-        {
-            try
-            {
-                // Update the student's properties
-                student.Name = name;
-                student.Age = age;
-                student.Major = major;
-
-                // Get the chosen subjects
-                var chosenSubjects = await _context.Subject
-                    .Where(s => subjectIdDst.Contains(s.Id))
-                    .ToListAsync();
-
-                // Remove the existing StudentSubject entities for the student
-                var studentSubjects = await _context.StudentSubject
-                    .Where(ss => ss.StudentId == id)
-                    .ToListAsync();
-                _context.StudentSubject.RemoveRange(studentSubjects);
-
-                // Add new StudentSubject entities for the chosen subjects
-                foreach (var subject in chosenSubjects)
-                {
-                    var studentSubject = new StudentSubject
-                    {
-                        Student = student,
-                        Subject = subject
-                    };
-                    _context.StudentSubject.Add(studentSubject);
-                }
-
-                int saveResult = await _context.SaveChangesAsync();
-                if (saveResult == 0)
-                {
-                    throw new Exception("Error saving changes to the database.");
-                }
-
-                // Set the result to redirect to the Index action
-                result = RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                // Log the exception and set the result to return the view with the current student
-                _logger.LogError("Exception caught: " + ex.Message);
-                result = View(student);
-            }
         }
 
         return result;
