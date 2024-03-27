@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BackToList" xml:space="preserve">
+    <value>Powrót do listy</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Utwórz</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Kredyty</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
@@ -128,5 +134,14 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Przedmiot</value>
   </data>
 </root>

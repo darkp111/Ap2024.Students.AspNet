@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Services;
@@ -15,9 +17,10 @@ public class DatabaseServiceTests
         var options = new DbContextOptionsBuilder<StudentsContext>()
             .UseInMemoryDatabase(databaseName: "TestDatabase")
             .Options;
+        Mock<ILogger<DatabaseService>> logger = new();
 
         using var context = new StudentsContext(options);
-        var service = new DatabaseService(context);
+        var service = new DatabaseService(logger.Object, context);
 
         var student = new Student { Id = 1, Name = "Test", Age = 20, Major = "Test Major" };
         context.Student.Add(student);

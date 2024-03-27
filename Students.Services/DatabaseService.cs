@@ -1,4 +1,5 @@
-﻿using Students.Common.Data;
+﻿using Microsoft.Extensions.Logging;
+using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 using System.Data.Entity;
@@ -10,9 +11,13 @@ public class DatabaseService : IDatabaseService
     #region Ctor and Properties
 
     private readonly StudentsContext _context;
+    private readonly ILogger<DatabaseService> _logger;
 
-    public DatabaseService(StudentsContext context)
+    public DatabaseService(
+        ILogger<DatabaseService> logger,
+        StudentsContext context)
     {
+        _logger = logger;
         _context = context;
     }
 
@@ -61,6 +66,30 @@ public class DatabaseService : IDatabaseService
         }
 
         return result;
+    }
+
+    public Student? DisplayStudent(int? id)
+    {
+        Student? student = null;
+        try
+        {
+            student = _context.Student
+                .FirstOrDefault(m => m.Id == id);
+            if (student is not null)
+            {
+                var studentSubjects = _context.StudentSubject
+                    .Where(ss => ss.StudentId == id)
+                    .Include(ss => ss.Subject)
+                    .ToList();
+                student.StudentSubjects = studentSubjects;
+            }
+        }
+        catch (Exception ex)
+        {
+           _logger.LogError("Exception caught in DisplayStudent: " + ex);
+        }
+
+        return student;
     }
 
     #endregion // Public Methods
