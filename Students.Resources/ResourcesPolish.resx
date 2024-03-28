@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Age" xml:space="preserve">
+    <value>Wiek</value>
+  </data>
   <data name="BackToList" xml:space="preserve">
     <value>Powrót do listy</value>
   </data>
@@ -135,11 +138,17 @@
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="Major" xml:space="preserve">
+    <value>Kierunek</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nazwa</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>Imię i nazwisko</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Przedmiot</value>

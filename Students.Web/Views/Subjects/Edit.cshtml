@@ -2,23 +2,15 @@
 @using System.Globalization
 @model Subject
 
+@inject ISharedResourcesService sharedResourcesService
+
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Edit";
 }
 
 
-@inject ISharedResourcesService sharedResourcesService
-@{
-    string? culture = Context.Session.GetString("Culture");
-    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
-    if (culture != null)
-    {
-        cultureInfo = CultureInfo.GetCultureInfo(culture);
-    }
-}
-
 <h1>@sharedResourcesService.GetString("Edit", cultureInfo)</h1>
-
 <h4>@sharedResourcesService.GetString("Subject", cultureInfo)</h4>
 <hr />
 <div class="row">
