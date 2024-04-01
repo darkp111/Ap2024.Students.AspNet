@@ -1,6 +1,6 @@
 ﻿@using Students.Interfaces
 @using System.Globalization
-@model Student
+@model Students.Common.Models.Book
 
 @inject ISharedResourcesService sharedResourcesService
 
@@ -12,41 +12,36 @@
 <h1>@sharedResourcesService.GetString("Details", cultureInfo)</h1>
 
 <div>
-    <h4>@sharedResourcesService.GetString("Student", cultureInfo)</h4>
+    <h4>@sharedResourcesService.GetString("Book", cultureInfo)</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Name", cultureInfo)
+            @sharedResourcesService.GetString("PagesCount", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.PagesCount)
         </dd>
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Age", cultureInfo)
+            @sharedResourcesService.GetString("Title", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
+            @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Major", cultureInfo)
+            @sharedResourcesService.GetString("Author", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Major)
+            @Html.DisplayFor(model => model.Author)
         </dd>
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Subjects", cultureInfo)
+            @sharedResourcesService.GetString("Description", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            <ul>
-                @foreach (var studentSubject in Model.StudentSubjects)
-                {
-                    <li>@studentSubject.Subject.Name</li>
-                }
-            </ul>
+            @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
-    <a asp-action="Index">@sharedResourcesService.GetString("BackToList", cultureInfo)</a>
+    <a asp-action="Index">@sharedResourcesService.GetString("BackToList", cultureInfo)t</a>
 </div>

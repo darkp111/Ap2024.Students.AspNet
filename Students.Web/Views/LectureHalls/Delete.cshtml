@@ -1,6 +1,6 @@
 ﻿@using Students.Interfaces
 @using System.Globalization
-@model Subject
+@model Students.Common.Models.LectureHall
 
 @inject ISharedResourcesService sharedResourcesService
 
@@ -13,20 +13,26 @@
 
 <h3>@sharedResourcesService.GetString("AreYouSureYouWantToDeleteThis", cultureInfo)</h3>
 <div>
-    <h4>@sharedResourcesService.GetString("Subject", cultureInfo)</h4>
+    <h4>@sharedResourcesService.GetString("LectureHall", cultureInfo)</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Name", cultureInfo)
+            @sharedResourcesService.GetString("PlacesCount", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.PlacesCount)
         </dd>
         <dt class = "col-sm-2">
-            @sharedResourcesService.GetString("Credits", cultureInfo)
+            @sharedResourcesService.GetString("Number", cultureInfo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Credits)
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResourcesService.GetString("Floor", cultureInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Floor)
         </dd>
     </dl>
     

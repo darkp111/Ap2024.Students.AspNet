@@ -118,147 +118,147 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Age" xml:space="preserve">
-    <value>Wiek</value>
+    <value>年齢</value>
   </data>
   <data name="AreYouSureYouWantToDeleteThis" xml:space="preserve">
-    <value>Czy na pewno chcesz to usunąć?</value>
+    <value>本当にこれを削除しますか？</value>
   </data>
   <data name="Author" xml:space="preserve">
-    <value>Autor</value>
+    <value>著者</value>
   </data>
   <data name="AvailableSubjects" xml:space="preserve">
-    <value>Dostępne tematy</value>
+    <value>利用可能な科目</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Powrót do listy</value>
+    <value>リストに戻る</value>
   </data>
   <data name="Book" xml:space="preserve">
-    <value>Książka</value>
+    <value>本</value>
   </data>
   <data name="Books" xml:space="preserve">
-    <value>Książki</value>
+    <value>本</value>
   </data>
   <data name="BuildingWebAppsWithASP.NETCore" xml:space="preserve">
-    <value>tworzenie aplikacji internetowych przy użyciu platformy ASP.NET Core</value>
+    <value>ASP.NET CoreでWebアプリを構築する</value>
   </data>
   <data name="ChosenSubjects" xml:space="preserve">
-    <value>Wybrane tematy</value>
+    <value>選択した科目</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Utwórz</value>
+    <value>作成</value>
   </data>
   <data name="CreateNew" xml:space="preserve">
-    <value>Utwórz nowy</value>
+    <value>新規作成</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Kredyty</value>
+    <value>クレジット</value>
   </data>
   <data name="Culture" xml:space="preserve">
-    <value>Język</value>
+    <value>言語</value>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>Dane</value>
+    <value>データ</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Usuń</value>
+    <value>削除</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Opis</value>
+    <value>説明</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Wyświetl</value>
+    <value>詳細</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edytuj</value>
+    <value>編集</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>Angielsky(US)</value>
+    <value>英語(米国)</value>
   </data>
   <data name="Floor" xml:space="preserve">
-    <value>Piętro</value>
+    <value>フロア</value>
   </data>
   <data name="German" xml:space="preserve">
-    <value>Niemieckie(Niemcy)</value>
+    <value>ドイツ語(ドイツ)</value>
   </data>
   <data name="HomePage" xml:space="preserve">
-    <value>Strona główna</value>
+    <value>ホームページ</value>
   </data>
   <data name="IndexOfBooks" xml:space="preserve">
-    <value>Lista książek</value>
+    <value>書籍の索引</value>
   </data>
   <data name="IndexOfLectureHalls" xml:space="preserve">
-    <value>Lista sal wykładowych</value>
+    <value>講演ホールの索引</value>
   </data>
   <data name="IndexOfStudents" xml:space="preserve">
-    <value>Lista studentów</value>
+    <value>学生のインデックス</value>
   </data>
   <data name="IndexOfSubjects" xml:space="preserve">
-    <value>Lista przedmiotów</value>
+    <value>科目のインデックス</value>
   </data>
   <data name="Japanese" xml:space="preserve">
-    <value>Japoński (Japonia)</value>
+    <value>日本語(日本)</value>
   </data>
   <data name="LearnAbout" xml:space="preserve">
-    <value>Uczyć się o </value>
+    <value>について学ぶ</value>
   </data>
   <data name="LectureHall" xml:space="preserve">
-    <value>Sala wykładowa</value>
+    <value>講堂</value>
   </data>
   <data name="LectureHalls" xml:space="preserve">
-    <value>Saly wykładowe</value>
+    <value>講堂</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>Kierunek</value>
+    <value>専攻</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Nazwa</value>
+    <value>名前</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>Numer</value>
+    <value>番号</value>
   </data>
   <data name="Operations" xml:space="preserve">
-    <value>Operacje</value>
+    <value>操作</value>
   </data>
   <data name="PagesCount" xml:space="preserve">
-    <value>Liczba stron</value>
+    <value>ページ数</value>
   </data>
   <data name="PlacesCount" xml:space="preserve">
-    <value>Liczba miejsc</value>
+    <value>場所数</value>
   </data>
   <data name="Polish" xml:space="preserve">
-    <value>Polski (PL)</value>
+    <value>ポーランド語(PL)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Prywatność</value>
+    <value>プライバシー</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Polityka prywatności</value>
+    <value>プライバシーポリシー</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Zapisz</value>
+    <value>保存</value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value>Student</value>
+    <value>学生</value>
   </data>
   <data name="StudentName" xml:space="preserve">
-    <value>Imię i nazwisko</value>
+    <value>名前と姓</value>
   </data>
   <data name="Students" xml:space="preserve">
-    <value>Studenty</value>
+    <value>学生</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Przedmiot</value>
+    <value>科目</value>
   </data>
   <data name="Subjects" xml:space="preserve">
-    <value>Przedmioty</value>
+    <value>科目</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Tytuł</value>
+    <value>タイトル</value>
   </data>
   <data name="UseThisPageToDetailYourSite'sPrivacyPolicy" xml:space="preserve">
-    <value>Skorzystaj z tej strony, aby szczegółowo zapoznać się z polityką prywatności swojej witryny.</value>
+    <value>このページを使用してサイトのプライバシーポリシーを詳細に説明します。</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Witamy</value>
+    <value>ようこそ</value>
   </data>
 </root>

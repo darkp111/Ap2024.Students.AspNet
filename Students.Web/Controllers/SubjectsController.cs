@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
+using Students.Interfaces;
+using Students.Services;
 
 namespace Students.Web.Controllers;
 
 public class SubjectsController : Controller
 {
     private readonly StudentsContext _context;
+    private readonly IDatabaseService _databaseService;
 
-    public SubjectsController(StudentsContext context)
+    public SubjectsController(StudentsContext context, IDatabaseService databaseService)
     {
         _context = context;
+        _databaseService = databaseService;
     }
 
     // GET: Subjects
@@ -28,18 +32,7 @@ public class SubjectsController : Controller
     // GET: Subjects/Details/5
     public async Task<IActionResult> Details(int? id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var subject = await _context.Subject
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (subject == null)
-        {
-            return NotFound();
-        }
-
+        var subject = await _databaseService.SubjectDetails(id);
         return View(subject);
     }
 
@@ -58,8 +51,7 @@ public class SubjectsController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Add(subject);
-            await _context.SaveChangesAsync();
+            var result = await _databaseService.CreateSubject(subject);
             return RedirectToAction(nameof(Index));
         }
         return View(subject);
@@ -73,11 +65,7 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _context.Subject.FindAsync(id);
-        if (subject == null)
-        {
-            return NotFound();
-        }
+        var subject = await _databaseService.EditSubject(id);
         return View(subject);
     }
 
@@ -88,29 +76,9 @@ public class SubjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject)
     {
-        if (id != subject.Id)
-        {
-            return NotFound();
-        }
-
         if (ModelState.IsValid)
         {
-            try
-            {
-                _context.Update(subject);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubjectExists(subject.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _databaseService.EditSubject(id, subject);
             return RedirectToAction(nameof(Index));
         }
         return View(subject);
@@ -124,12 +92,7 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _context.Subject
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (subject == null)
-        {
-            return NotFound();
-        }
+        var subject = await _databaseService.DeleteSubject(id);
 
         return View(subject);
     }
@@ -139,18 +102,13 @@ public class SubjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var subject = await _context.Subject.FindAsync(id);
-        if (subject != null)
-        {
-            _context.Subject.Remove(subject);
-        }
-
-        await _context.SaveChangesAsync();
+        var subject = await _databaseService.SubjectDeleteConfirmed(id);
         return RedirectToAction(nameof(Index));
     }
 
     private bool SubjectExists(int id)
     {
-        return _context.Subject.Any(e => e.Id == id);
+        var result = _databaseService.CheckSubjectExist(id);
+        return result;
     }
 }

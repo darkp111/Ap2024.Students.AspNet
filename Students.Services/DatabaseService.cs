@@ -2,7 +2,9 @@
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using System.Data.Entity;
+using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace Students.Services;
 
@@ -24,6 +26,228 @@ public class DatabaseService : IDatabaseService
     #endregion // Ctor and Properties
 
     #region Public Methods
+
+    public bool CheckStudentExist(int id)
+    {
+        var result = _context.Student.Any(e => e.Id == id);
+        return result;
+    }
+
+    public async Task<Student> Details(int? id)
+    {
+        var student = await _context.Student
+                    .FirstOrDefaultAsync(m => m.Id == id);
+
+        var studentSubjects = _context.StudentSubject
+            .Where(ss => ss.StudentId == id)
+            .Include(ss => ss.Subject)
+            .ToList();
+        if (student is not null)
+            student.StudentSubjects = studentSubjects;
+
+        if (student != null)
+        {
+            return student;
+        }
+        else
+            throw new Exception("Student detailes find failed");
+    }
+
+    public async Task<Subject> SubjectDetails(int? id)
+    {
+        if (id == null)
+        {
+            throw new Exception("Error");
+        }
+
+        var subject = await _context.Subject
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (subject == null)
+        {
+            throw new Exception("Error");
+        }
+        return subject;
+    }
+
+    public async Task<bool> CreateSubject(Subject subject)
+    {
+        var result = false;
+        _context.Add(subject);
+        var CheckResult = await _context.SaveChangesAsync();
+        result = CheckResult > 0;
+        return result;
+    }
+
+    public async Task<Subject> EditSubject(int? id)
+    {
+        var subject = await _context.Subject.FindAsync(id);
+
+        if (subject != null)
+            return subject;
+        else
+            throw new Exception("Error");
+    }
+
+    public async Task<Subject> DeleteSubject(int? id)
+    {
+        var subject = await _context.Subject
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (subject != null)
+            return subject;
+        else
+            throw new Exception("Error");
+    }
+
+    public async Task<bool> SubjectDeleteConfirmed(int id)
+    {
+        var result = false;
+        var subject = await _context.Subject.FindAsync(id);
+        if (subject != null)
+        {
+            _context.Subject.Remove(subject);
+        }
+
+        var checkresult = await _context.SaveChangesAsync();
+        result = checkresult > 0;
+        return result;
+    }
+
+    public bool CheckSubjectExist(int id)
+    {
+        var result = _context.Subject.Any(e => e.Id == id);
+        return result;
+    }
+
+
+    public async Task<Subject> EditSubject(int id, Subject subject)
+    {
+        if (id != subject.Id)
+        {
+            throw new Exception("No such id found");
+        }
+
+        try
+        {
+            _context.Update(subject);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!CheckSubjectExist(subject.Id))
+            {
+                throw new Exception("There is no such a subject");
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return subject;
+
+    }
+    public Student Create()
+    {
+        var listOfSubjects = _context.Subject
+                 .ToList();
+        var newStudent = new Student();
+        newStudent.AvailableSubjects = listOfSubjects;
+
+        return newStudent;
+    }
+
+    public async Task<bool> Create(int id, string name, int age, string major, int[] subjectIdDst)
+    {
+        var result = false;
+        try
+        {
+            var chosenSubjects = _context.Subject
+                .Where(s => subjectIdDst.Contains(s.Id))
+                .ToList();
+            var availableSubjects = _context.Subject
+                .Where(s => !subjectIdDst.Contains(s.Id))
+                .ToList();
+            var student = new Student()
+            {
+                Id = id,
+                Name = name,
+                Age = age,
+                Major = major,
+                AvailableSubjects = availableSubjects
+            };
+            foreach (var chosenSubject in chosenSubjects)
+            {
+                student.AddSubject(chosenSubject);
+            }
+            await _context.Student.AddAsync(student);
+            var checkResult = await _context.SaveChangesAsync();
+            result = checkResult > 0;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
+        }
+
+        return result;
+    }
+
+     public async Task<bool>  StudentDeleteConfirmedProc(int id)
+     {
+        var result = false;
+        var student = await _context.Student.FindAsync(id);
+        if (student != null)
+        {
+            _context.Student.Remove(student);
+        }
+
+        var checkresult = await _context.SaveChangesAsync();
+        result = checkresult > 0;
+        return result;
+     }
+
+     public async Task<List<Student>> Index()
+     {
+        List<Student> model = await _context.Student.ToListAsync();
+        return model;
+     }
+
+     public async Task<Student> EditStudent(int? id)
+     {
+        var student = await _context.Student.FindAsync(id);
+        try
+        {
+            if (id != null)
+            {
+                if (student != null)
+                {
+                    var chosenSubjects = _context.StudentSubject
+                        .Where(ss => ss.StudentId == id)
+                        .Select(ss => ss.Subject)
+                        .ToList();
+                    var availableSubjects = _context.Subject
+                        .Where(s => !chosenSubjects.Contains(s))
+                        .ToList();
+                    student.StudentSubjects = _context.StudentSubject
+                        .Where(x => x.StudentId == id)
+                        .ToList();
+                    student.AvailableSubjects = availableSubjects;
+
+                    return student;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
+        }
+        if (student != null)
+        {
+            return student;
+        }
+        else
+        {
+            throw new Exception("Studentu ploxo");
+        }
+     }
 
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
     {
@@ -68,19 +292,16 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public Student? DisplayStudent(int? id)
+    public async Task<Student?> DisplayStudent(int? id)
     {
         Student? student = null;
         try
         {
-            student = _context.Student
+            student =  _context.Student
                 .FirstOrDefault(m => m.Id == id);
             if (student is not null)
             {
-                var studentSubjects = _context.StudentSubject
-                    .Where(ss => ss.StudentId == id)
-                    .Include(ss => ss.Subject)
-                    .ToList();
+                var studentSubjects = await _context.StudentSubject.Where(ss => ss.StudentId == id).Include(ss => ss.Subject).ToListAsync();
                 student.StudentSubjects = studentSubjects;
             }
         }

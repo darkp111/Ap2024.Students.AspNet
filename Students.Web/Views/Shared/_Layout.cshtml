@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Students.Interfaces
+@using System.Globalization
+
+@inject ISharedResourcesService sharedResourcesService
+
+@{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,31 +29,37 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@sharedResourcesService.GetString("HomePage", cultureInfo)</a>
                         </li>
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">@sharedResourcesService.GetString("Data", cultureInfo)</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">@sharedResourcesService.GetString("Students", cultureInfo)</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Subjects" asp-action="Index">Subjects</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Subjects" asp-action="Index">@sharedResourcesService.GetString("Subjects", cultureInfo)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">@sharedResourcesService.GetString("Books", cultureInfo)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="LectureHalls" asp-action="Index">@sharedResourcesService.GetString("LectureHalls", cultureInfo)</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">@sharedResourcesService.GetString("Privacy", cultureInfo)</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Culture</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">@sharedResourcesService.GetString("Culture", cultureInfo)</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" data-culture="en-US">English (US)</a></li>
-                                <li><a class="dropdown-item" href="#" data-culture="de-DE">German (Germany)</a></li>
-                                <li><a class="dropdown-item" href="#" data-culture="ja-JP">Japanese (Japan)</a></li>
-                                <li><a class="dropdown-item" href="#" data-culture="pl-PL">Polish (Poland)</a></li>
+                                <li><a class="dropdown-item" href="#" data-culture="en-US">@sharedResourcesService.GetString("English", cultureInfo)</a></li>
+                                <li><a class="dropdown-item" href="#" data-culture="de-DE">@sharedResourcesService.GetString("German", cultureInfo)</a></li>
+                                <li><a class="dropdown-item" href="#" data-culture="ja-JP">@sharedResourcesService.GetString("Japanese", cultureInfo)</a></li>
+                                <li><a class="dropdown-item" href="#" data-culture="pl-PL">@sharedResourcesService.GetString("Polish", cultureInfo)</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -60,7 +75,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Students.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - Students.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">@sharedResourcesService.GetString("Privacy", cultureInfo)</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

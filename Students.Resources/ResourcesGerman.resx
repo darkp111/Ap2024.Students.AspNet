@@ -118,147 +118,147 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Age" xml:space="preserve">
-    <value>Wiek</value>
+    <value>Alter</value>
   </data>
   <data name="AreYouSureYouWantToDeleteThis" xml:space="preserve">
-    <value>Czy na pewno chcesz to usunąć?</value>
+    <value>Sind Sie sicher, dass Sie dies löschen möchten?</value>
   </data>
   <data name="Author" xml:space="preserve">
-    <value>Autor</value>
+    <value>Autorin</value>
   </data>
   <data name="AvailableSubjects" xml:space="preserve">
-    <value>Dostępne tematy</value>
+    <value>Verfügbare Themen</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Powrót do listy</value>
+    <value>Zurück zur Liste</value>
   </data>
   <data name="Book" xml:space="preserve">
-    <value>Książka</value>
+    <value>Buch</value>
   </data>
   <data name="Books" xml:space="preserve">
-    <value>Książki</value>
+    <value>Bücher</value>
   </data>
   <data name="BuildingWebAppsWithASP.NETCore" xml:space="preserve">
-    <value>tworzenie aplikacji internetowych przy użyciu platformy ASP.NET Core</value>
+    <value>erstellen von Webanwendungen mit ASP.NET Core</value>
   </data>
   <data name="ChosenSubjects" xml:space="preserve">
-    <value>Wybrane tematy</value>
+    <value>Ausgewählte Themen</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Utwórz</value>
+    <value>Erstellen</value>
   </data>
   <data name="CreateNew" xml:space="preserve">
-    <value>Utwórz nowy</value>
+    <value>Erstellen Sie ein neues</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Kredyty</value>
+    <value>Credits</value>
   </data>
   <data name="Culture" xml:space="preserve">
-    <value>Język</value>
+    <value>Sprache</value>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>Dane</value>
+    <value>Daten</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Usuń</value>
+    <value>Löschen</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Opis</value>
+    <value>Beschreibung</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Wyświetl</value>
+    <value>Einzelheiten</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edytuj</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>Angielsky(US)</value>
+    <value>Englisch (Amerikanisches)</value>
   </data>
   <data name="Floor" xml:space="preserve">
-    <value>Piętro</value>
+    <value>Etage</value>
   </data>
   <data name="German" xml:space="preserve">
-    <value>Niemieckie(Niemcy)</value>
+    <value>Deutsches (Deutschland)</value>
   </data>
   <data name="HomePage" xml:space="preserve">
-    <value>Strona główna</value>
+    <value>Startseite</value>
   </data>
   <data name="IndexOfBooks" xml:space="preserve">
-    <value>Lista książek</value>
+    <value>Verzeichnis der Bücher</value>
   </data>
   <data name="IndexOfLectureHalls" xml:space="preserve">
-    <value>Lista sal wykładowych</value>
+    <value>Verzeichnis der Hörsäle</value>
   </data>
   <data name="IndexOfStudents" xml:space="preserve">
-    <value>Lista studentów</value>
+    <value>Index der Studierenden</value>
   </data>
   <data name="IndexOfSubjects" xml:space="preserve">
-    <value>Lista przedmiotów</value>
+    <value>Themenverzeichnis</value>
   </data>
   <data name="Japanese" xml:space="preserve">
-    <value>Japoński (Japonia)</value>
+    <value>Japanisch (Japan)</value>
   </data>
   <data name="LearnAbout" xml:space="preserve">
-    <value>Uczyć się o </value>
+    <value>Lernen </value>
   </data>
   <data name="LectureHall" xml:space="preserve">
-    <value>Sala wykładowa</value>
+    <value>Hörsaal</value>
   </data>
   <data name="LectureHalls" xml:space="preserve">
-    <value>Saly wykładowe</value>
+    <value>Hörsäle</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>Kierunek</value>
+    <value>Wesentlich</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Nazwa</value>
+    <value>Name</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>Numer</value>
+    <value>Nummer</value>
   </data>
   <data name="Operations" xml:space="preserve">
-    <value>Operacje</value>
+    <value>Operationen</value>
   </data>
   <data name="PagesCount" xml:space="preserve">
-    <value>Liczba stron</value>
+    <value>Seitenanzahl</value>
   </data>
   <data name="PlacesCount" xml:space="preserve">
-    <value>Liczba miejsc</value>
+    <value>Orte zählen</value>
   </data>
   <data name="Polish" xml:space="preserve">
-    <value>Polski (PL)</value>
+    <value>Polnisch (PL)</value>
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Prywatność</value>
+    <value>Privatsphäre</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Polityka prywatności</value>
+    <value>Datenschutzrichtlinie</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Zapisz</value>
+    <value>Speichern</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
   </data>
   <data name="StudentName" xml:space="preserve">
-    <value>Imię i nazwisko</value>
+    <value>Name und Nachname</value>
   </data>
   <data name="Students" xml:space="preserve">
-    <value>Studenty</value>
+    <value>Studenten</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Przedmiot</value>
+    <value>Thema</value>
   </data>
   <data name="Subjects" xml:space="preserve">
-    <value>Przedmioty</value>
+    <value>Fächer</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Tytuł</value>
+    <value>Titel</value>
   </data>
   <data name="UseThisPageToDetailYourSite'sPrivacyPolicy" xml:space="preserve">
-    <value>Skorzystaj z tej strony, aby szczegółowo zapoznać się z polityką prywatności swojej witryny.</value>
+    <value>Auf dieser Seite können Sie die Datenschutzrichtlinien Ihrer Website detailliert beschreiben.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Witamy</value>
+    <value>Willkommen</value>
   </data>
 </root>

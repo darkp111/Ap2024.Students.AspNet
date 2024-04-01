@@ -1,15 +1,16 @@
 ﻿@using Students.Interfaces
 @using System.Globalization
-@model IEnumerable<Subject>
+@model IEnumerable<Students.Common.Models.Book>
 
 @inject ISharedResourcesService sharedResourcesService
 
 @{
+
     CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Index";
 }
 
-<h1>@sharedResourcesService.GetString("IndexOfSubjects", cultureInfo)</h1>
+<h1>@sharedResourcesService.GetString("IndexOfBooks", cultureInfo)</h1>
 
 <p>
     <a asp-action="Create">@sharedResourcesService.GetString("CreateNew", cultureInfo)</a>
@@ -18,22 +19,34 @@
     <thead>
         <tr>
             <th>
-                @sharedResourcesService.GetString("Name", cultureInfo)
+                @sharedResourcesService.GetString("PagesCount", cultureInfo)
             </th>
             <th>
-                @sharedResourcesService.GetString("Credits", cultureInfo)
+                @sharedResourcesService.GetString("Title", cultureInfo)
+            </th>
+            <th>
+                @sharedResourcesService.GetString("Author", cultureInfo)
+            </th>
+            <th>
+                @sharedResourcesService.GetString("Description", cultureInfo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.PagesCount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credits)
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |

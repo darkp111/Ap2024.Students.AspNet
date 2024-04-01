@@ -43,6 +43,14 @@ public class SharedResourcesService : ISharedResourcesService
             {
                 resourceManager = new ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
             }
+            else if (string.Equals(cultureInfo.Name, "de-DE"))
+            {
+                resourceManager = new ResourceManager("Students.Resources.ResourcesGerman", typeof(ResourcesGerman).Assembly);
+            }
+            else if (string.Equals(cultureInfo.Name, "ja-JP"))
+            {
+                resourceManager = new ResourceManager("Students.Resources.ResourcesJapanese", typeof(ResourcesJapanese).Assembly);
+            }
             else
             {
                 throw new NotSupportedException($"Culture {cultureInfo.Name} is not supported.");

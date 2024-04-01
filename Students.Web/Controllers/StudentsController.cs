@@ -33,12 +33,12 @@ public class StudentsController : Controller
     #region Public Methods
 
     // GET: Students
-    public async Task<IActionResult> Index(string? culture)
+    public async Task<IActionResult> Index()
     {
         IActionResult result = View();
         try
         {
-            var model = await _context.Student.ToListAsync();
+            var model = await _databaseService.Index();
             result = View(model);
         }
         catch (Exception ex)
@@ -50,19 +50,25 @@ public class StudentsController : Controller
     }
 
     // GET: Students/Details/5
-    public IActionResult Details(int? id)
+    public async Task<IActionResult> Details(int? id)
     {
         IActionResult result = NotFound();
 
         try
         {
-            var student = _databaseService.DisplayStudent(id);
+            if (id != null)
+            {
+                var student = await _databaseService.Details(id);
+                if (student != null)
+                {
+                    result = View(student);
+                }
+            }
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
         }
-
         return result;
     }
 
@@ -72,10 +78,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var listOfSubjects = _context.Subject
-                .ToList();
-            var newStudent = new Student();
-            newStudent.AvailableSubjects = listOfSubjects;
+            var newStudent = _databaseService.Create();
 
              result = View(newStudent);
         }
@@ -94,47 +97,22 @@ public class StudentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(int id, string name, int age, string major, int[] subjectIdDst)
     {
-        IActionResult result = View();
+        IActionResult result;
+
         try
         {
-            var chosenSubjects = _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToList();
-            var availableSubjects = _context.Subject
-                .Where(s => !subjectIdDst.Contains(s.Id))
-                .ToList();
-            var student = new Student()
+            var newStudent = await _databaseService.Create(id, name, age, major, subjectIdDst);
+            if (!newStudent)
             {
-                Id = id,
-                Name = name,
-                Age = age,
-                Major = major,
-                AvailableSubjects = availableSubjects
-            };
-            foreach (var chosenSubject in chosenSubjects)
-            {
-                student.AddSubject(chosenSubject);
+                throw new Exception("Error while saving");
             }
-            if (ModelState.IsValid)
-            {
-                _context.Add(student);
-                var additionResult = await _context.SaveChangesAsync();
-                if (additionResult == 0)
-                {
-                    throw new Exception("Error saving changes to the database.");
-                }
-                result = RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                result = View(student);
-            }
+            result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
+            result = View();
         }
-
         return result;
     }
 
@@ -145,31 +123,13 @@ public class StudentsController : Controller
 
         try
         {
-            if (id != null)
-            {
-                var student = await _context.Student.FindAsync(id);
-                if (student != null)
-                {
-                    var chosenSubjects = _context.StudentSubject
-                        .Where(ss => ss.StudentId == id)
-                        .Select(ss => ss.Subject)
-                        .ToList();
-                    var availableSubjects = _context.Subject
-                        .Where(s => !chosenSubjects.Contains(s))
-                        .ToList();
-                    student.StudentSubjects = _context.StudentSubject
-                        .Where(x => x.StudentId == id)
-                        .ToList();
-                    student.AvailableSubjects = availableSubjects;
-                    result = View(student);
-                }
-            }
+           var student = await _databaseService.EditStudent(id);
+            result = View(student);
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
         }
-
         return result;
     }
 
@@ -218,8 +178,7 @@ public class StudentsController : Controller
             else
             {
 
-                var student = await _context.Student
-                    .FirstOrDefaultAsync(m => m.Id == id);
+                var student = await _databaseService.DisplayStudent(id);
                 if (student == null)
                 {
                     result = NotFound();
@@ -246,13 +205,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var student = await _context.Student.FindAsync(id);
-            if (student != null)
-            {
-                _context.Student.Remove(student);
-            }
-
-            await _context.SaveChangesAsync();
+            var student = await _databaseService.StudentDeleteConfirmedProc(id);
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -269,7 +222,7 @@ public class StudentsController : Controller
 
     private bool StudentExists(int id)
     {
-        var result = _context.Student.Any(e => e.Id == id);
+        var result = _databaseService.CheckStudentExist(id);
         return result;
     }
 

@@ -1,15 +1,16 @@
 ﻿@using Students.Interfaces
 @using System.Globalization
-@model IEnumerable<Subject>
+@model IEnumerable<Students.Common.Models.LectureHall>
 
 @inject ISharedResourcesService sharedResourcesService
+
 
 @{
     CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Index";
 }
 
-<h1>@sharedResourcesService.GetString("IndexOfSubjects", cultureInfo)</h1>
+<h1>@sharedResourcesService.GetString("IndexOfLectureHalls", cultureInfo)</h1>
 
 <p>
     <a asp-action="Create">@sharedResourcesService.GetString("CreateNew", cultureInfo)</a>
@@ -18,22 +19,28 @@
     <thead>
         <tr>
             <th>
-                @sharedResourcesService.GetString("Name", cultureInfo)
+                @sharedResourcesService.GetString("PlacesCount", cultureInfo)
             </th>
             <th>
-                @sharedResourcesService.GetString("Credits", cultureInfo)
+                @sharedResourcesService.GetString("Number", cultureInfo)
+            </th>
+            <th>
+                @sharedResourcesService.GetString("Floor", cultureInfo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.PlacesCount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credits)
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor)
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |

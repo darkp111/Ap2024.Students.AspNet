@@ -22,14 +22,14 @@ namespace Students.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourcesEnglish {
+    public class ResourcesGerman {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesEnglish() {
+        internal ResourcesGerman() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Students.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesGerman", typeof(ResourcesGerman).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age.
+        ///   Looks up a localized string similar to Alter.
         /// </summary>
         public static string Age {
             get {
@@ -70,7 +70,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this ?.
+        ///   Looks up a localized string similar to Sind Sie sicher, dass Sie dies löschen möchten?.
         /// </summary>
         public static string AreYouSureYouWantToDeleteThis {
             get {
@@ -79,7 +79,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Author.
+        ///   Looks up a localized string similar to Autorin.
         /// </summary>
         public static string Author {
             get {
@@ -88,7 +88,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available subjects.
+        ///   Looks up a localized string similar to Verfügbare Themen.
         /// </summary>
         public static string AvailableSubjects {
             get {
@@ -97,7 +97,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back to List.
+        ///   Looks up a localized string similar to Zurück zur Liste.
         /// </summary>
         public static string BackToList {
             get {
@@ -106,7 +106,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Book.
+        ///   Looks up a localized string similar to Buch.
         /// </summary>
         public static string Book {
             get {
@@ -115,7 +115,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Books.
+        ///   Looks up a localized string similar to Bücher.
         /// </summary>
         public static string Books {
             get {
@@ -124,7 +124,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to building Web apps with ASP.NET Core.
+        ///   Looks up a localized string similar to erstellen von Webanwendungen mit ASP.NET Core.
         /// </summary>
         public static string BuildingWebAppsWithASP_NETCore {
             get {
@@ -133,7 +133,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chosen subjects.
+        ///   Looks up a localized string similar to Ausgewählte Themen.
         /// </summary>
         public static string ChosenSubjects {
             get {
@@ -142,7 +142,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create.
+        ///   Looks up a localized string similar to Erstellen.
         /// </summary>
         public static string Create {
             get {
@@ -151,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create new.
+        ///   Looks up a localized string similar to Erstellen Sie ein neues.
         /// </summary>
         public static string CreateNew {
             get {
@@ -169,7 +169,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data.
+        ///   Looks up a localized string similar to Daten.
         /// </summary>
         public static string Data {
             get {
@@ -178,7 +178,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to Löschen.
         /// </summary>
         public static string Delete {
             get {
@@ -187,7 +187,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description.
+        ///   Looks up a localized string similar to Beschreibung.
         /// </summary>
         public static string Description {
             get {
@@ -196,7 +196,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Details.
+        ///   Looks up a localized string similar to Einzelheiten.
         /// </summary>
         public static string Details {
             get {
@@ -205,7 +205,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to Bearbeiten.
         /// </summary>
         public static string Edit {
             get {
@@ -214,7 +214,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English(US).
+        ///   Looks up a localized string similar to Englisch (Amerikanisches).
         /// </summary>
         public static string English {
             get {
@@ -223,7 +223,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Floor.
+        ///   Looks up a localized string similar to Etage.
         /// </summary>
         public static string Floor {
             get {
@@ -232,7 +232,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to German(Germany).
+        ///   Looks up a localized string similar to Deutsches (Deutschland).
         /// </summary>
         public static string German {
             get {
@@ -241,7 +241,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Page.
+        ///   Looks up a localized string similar to Startseite.
         /// </summary>
         public static string HomePage {
             get {
@@ -250,7 +250,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of books.
+        ///   Looks up a localized string similar to Verzeichnis der Bücher.
         /// </summary>
         public static string IndexOfBooks {
             get {
@@ -259,7 +259,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of Lecture halls.
+        ///   Looks up a localized string similar to Verzeichnis der Hörsäle.
         /// </summary>
         public static string IndexOfLectureHalls {
             get {
@@ -268,7 +268,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of students.
+        ///   Looks up a localized string similar to Index der Studierenden.
         /// </summary>
         public static string IndexOfStudents {
             get {
@@ -277,7 +277,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of subjects.
+        ///   Looks up a localized string similar to Themenverzeichnis.
         /// </summary>
         public static string IndexOfSubjects {
             get {
@@ -286,7 +286,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Japanese(Japan).
+        ///   Looks up a localized string similar to Japanisch (Japan).
         /// </summary>
         public static string Japanese {
             get {
@@ -295,7 +295,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn about .
+        ///   Looks up a localized string similar to Lernen .
         /// </summary>
         public static string LearnAbout {
             get {
@@ -304,7 +304,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lecture Hall.
+        ///   Looks up a localized string similar to Hörsaal.
         /// </summary>
         public static string LectureHall {
             get {
@@ -313,7 +313,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lecture Halls.
+        ///   Looks up a localized string similar to Hörsäle.
         /// </summary>
         public static string LectureHalls {
             get {
@@ -322,7 +322,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Major.
+        ///   Looks up a localized string similar to Wesentlich.
         /// </summary>
         public static string Major {
             get {
@@ -340,7 +340,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number.
+        ///   Looks up a localized string similar to Nummer.
         /// </summary>
         public static string Number {
             get {
@@ -349,7 +349,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operations.
+        ///   Looks up a localized string similar to Operationen.
         /// </summary>
         public static string Operations {
             get {
@@ -358,7 +358,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pages count.
+        ///   Looks up a localized string similar to Seitenanzahl.
         /// </summary>
         public static string PagesCount {
             get {
@@ -367,7 +367,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Places count.
+        ///   Looks up a localized string similar to Orte zählen.
         /// </summary>
         public static string PlacesCount {
             get {
@@ -376,7 +376,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Polish(PL).
+        ///   Looks up a localized string similar to Polnisch (PL).
         /// </summary>
         public static string Polish {
             get {
@@ -385,7 +385,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Privacy.
+        ///   Looks up a localized string similar to Privatsphäre.
         /// </summary>
         public static string Privacy {
             get {
@@ -394,7 +394,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Privacy Policy.
+        ///   Looks up a localized string similar to Datenschutzrichtlinie.
         /// </summary>
         public static string PrivacyPolicy {
             get {
@@ -403,7 +403,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Speichern.
         /// </summary>
         public static string Save {
             get {
@@ -421,7 +421,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name and surname.
+        ///   Looks up a localized string similar to Name und Nachname.
         /// </summary>
         public static string StudentName {
             get {
@@ -430,7 +430,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Students.
+        ///   Looks up a localized string similar to Studenten.
         /// </summary>
         public static string Students {
             get {
@@ -439,7 +439,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subject.
+        ///   Looks up a localized string similar to Thema.
         /// </summary>
         public static string Subject {
             get {
@@ -448,7 +448,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subjects.
+        ///   Looks up a localized string similar to Fächer.
         /// </summary>
         public static string Subjects {
             get {
@@ -457,7 +457,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title.
+        ///   Looks up a localized string similar to Titel.
         /// </summary>
         public static string Title {
             get {
@@ -466,7 +466,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use this page to detail your site&apos;s privacy policy..
+        ///   Looks up a localized string similar to Auf dieser Seite können Sie die Datenschutzrichtlinien Ihrer Website detailliert beschreiben..
         /// </summary>
         public static string UseThisPageToDetailYourSite_sPrivacyPolicy {
             get {
@@ -475,7 +475,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome.
+        ///   Looks up a localized string similar to Willkommen.
         /// </summary>
         public static string Welcome {
             get {
