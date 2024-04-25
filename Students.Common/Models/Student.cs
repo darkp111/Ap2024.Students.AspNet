@@ -1,3 +1,4 @@
+using Students.Common.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,10 +10,14 @@ public class Student
 
     [Required]
     [StringLength(100)]
+    [CapitalLettersInNameAndSurname]
     public string Name { get; set; } = string.Empty;
 
     [Range(1, 100)]
     public int Age { get; set; }
+
+    [PostalCodeRightVersionAttribute]
+    public string PostalCode { get; set; } = string.Empty;
 
     [Required]
     [StringLength(100)]
@@ -27,11 +32,12 @@ public class Student
     {
     }
 
-    public Student(string name, int age, string major)
+    public Student(string name, int age, string major, string postalCode)
     {
         Name = name;
         Age = age;
         Major = major;
+        PostalCode = postalCode;
     }
 
     public void AddSubject(Subject subject)

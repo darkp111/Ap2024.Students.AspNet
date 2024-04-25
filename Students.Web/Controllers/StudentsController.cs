@@ -95,25 +95,14 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<IActionResult> Create([Bind("Id,Name,Age,Major,PostalCode")] Student student, int[] subjectIdDst)
     {
-        IActionResult result;
-
-        try
+        if (ModelState.IsValid)
         {
-            var newStudent = await _databaseService.Create(id, name, age, major, subjectIdDst);
-            if (!newStudent)
-            {
-                throw new Exception("Error while saving");
-            }
-            result = RedirectToAction(nameof(Index));
+            var newStudent = await _databaseService.Create(student, subjectIdDst);
+            return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex)
-        {
-            _logger.LogError("Exception caught: " + ex.Message);
-            result = View();
-        }
-        return result;
+        return View(student);
     }
 
     // GET: Students/Edit/5
@@ -138,30 +127,14 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<IActionResult> Edit([Bind("Id,Name,Age,Major,PostalCode")] Student student, int[] subjectIdDst)
     {
-        IActionResult result;
-
-        try
+        if (ModelState.IsValid)
         {
-            bool saveResult = _databaseService.EditStudent(id, name, age, major, subjectIdDst);
-            if (!saveResult)
-            {
-                throw new Exception("Error saving changes to the database.");
-            }
-
-            // Set the result to redirect to the Index action
-            result = RedirectToAction(nameof(Index));
+            student = await _databaseService.EditStudent(student, subjectIdDst);
+            return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex)
-        {
-            // Log the exception and set the result to return the view with the current student
-            _logger.LogError("Exception caught: " + ex.Message);
-            var student = await _context.Student.FindAsync(id);
-            result = View(student);
-        }
-
-        return result;
+        return View(student);
     }
 
 

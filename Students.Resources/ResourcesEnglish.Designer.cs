@@ -61,6 +61,24 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administration Employee.
+        /// </summary>
+        public static string AdministrationEmployee {
+            get {
+                return ResourceManager.GetString("AdministrationEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Administration Employees.
+        /// </summary>
+        public static string AdministrationEmployees {
+            get {
+                return ResourceManager.GetString("AdministrationEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age.
         /// </summary>
         public static string Age {
@@ -214,6 +232,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English(US).
         /// </summary>
         public static string English {
@@ -246,6 +273,15 @@ namespace Students.Resources {
         public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index Of Administration Employees.
+        /// </summary>
+        public static string IndexOfAdministrationEmployees {
+            get {
+                return ResourceManager.GetString("IndexOfAdministrationEmployees", resourceCulture);
             }
         }
         
@@ -381,6 +417,15 @@ namespace Students.Resources {
         public static string Polish {
             get {
                 return ResourceManager.GetString("Polish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         

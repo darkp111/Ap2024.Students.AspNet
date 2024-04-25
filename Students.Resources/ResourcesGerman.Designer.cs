@@ -61,6 +61,24 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verwaltungsmitarbeiter.
+        /// </summary>
+        public static string AdministrationEmployee {
+            get {
+                return ResourceManager.GetString("AdministrationEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verwaltungsmitarbeiter.
+        /// </summary>
+        public static string AdministrationEmployees {
+            get {
+                return ResourceManager.GetString("AdministrationEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alter.
         /// </summary>
         public static string Age {
@@ -210,6 +228,15 @@ namespace Students.Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -381,6 +408,15 @@ namespace Students.Resources {
         public static string Polish {
             get {
                 return ResourceManager.GetString("Polish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         

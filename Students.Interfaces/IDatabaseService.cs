@@ -4,7 +4,7 @@ namespace Students.Interfaces;
 
 public interface IDatabaseService
 {
-    bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
+    Task<Student> EditStudent(Student student, int[] subjectIdDst);
 
     bool CheckStudentExist(int id);
 
@@ -18,7 +18,7 @@ public interface IDatabaseService
 
     Student Create();
 
-    Task<bool> Create(int id, string name, int age, string major, int[] subjectIdDst);
+    Task<Student> Create(Student student, int[] subjectIdDst);
 
     Task<Subject> SubjectDetails(int? id);
 

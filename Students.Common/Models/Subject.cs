@@ -9,7 +9,7 @@ public class Subject
     public int Id { get; set; }
 
     [Required]
-    [CapitalLettersOnly]
+    [CapitalLettersOnlyAndNoNumbers]
     public string Name { get; set; } = string.Empty;
 
     [Range(1, 10)]

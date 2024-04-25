@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdministrationEmployee" xml:space="preserve">
+    <value>Administration Employee</value>
+  </data>
+  <data name="AdministrationEmployees" xml:space="preserve">
+    <value>Administration Employees</value>
+  </data>
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
@@ -171,6 +177,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English(US)</value>
   </data>
@@ -182,6 +191,9 @@
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="IndexOfAdministrationEmployees" xml:space="preserve">
+    <value>Index Of Administration Employees</value>
   </data>
   <data name="IndexOfBooks" xml:space="preserve">
     <value>Index of books</value>
@@ -227,6 +239,9 @@
   </data>
   <data name="Polish" xml:space="preserve">
     <value>Polish(PL)</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
